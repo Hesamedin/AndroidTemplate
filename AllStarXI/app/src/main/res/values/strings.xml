@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AllStarXI</string>
+    <string name="connect_with_facebook">Connect With Facebook</string>
+    <string name="connect_with_twitter">Connect With Twitter</string>
+    <string name="sign_up_with_email">Sign Up With Email</string>
+    <string name="already_have_account">Already Have An Account</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_profile_setup">ProfileSetupActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="profile_change">CHANGE</string>
+    <string name="username">USERNAME</string>
+    <string name="username_hint">username</string>
+    <string name="team_name">TEAM NAME</string>
+    <string name="teamname_hint">TEAM NAME</string>
+    <string name="favorite_team">FAVORITE TEAM</string>
+    <string name="favorite_team_hint">Favorite Team</string>
+</resources>
