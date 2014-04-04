@@ -38,6 +38,6 @@ public class ProfileSetupActivity extends Activity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        
+
     }
 }

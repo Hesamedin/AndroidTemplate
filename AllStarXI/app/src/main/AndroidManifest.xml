@@ -20,6 +20,18 @@
             android:name="com.allstarxi.app.ProfileSetupActivity"
             android:label="@string/title_activity_profile_setup" >
         </activity>
+        <activity
+            android:name="com.allstarxi.app.FavoriteTeamActivity"
+            android:label="@string/title_activity_favorite_team" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.EmailSignUpActivity"
+            android:label="@string/title_activity_email_sign_up" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.AutoDraftStep1Activity"
+            android:label="@string/title_activity_auto_draft_step1" >
+        </activity>
     </application>
 
 </manifest>

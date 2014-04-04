@@ -17,4 +17,15 @@
     <string name="teamname_hint">TEAM NAME</string>
     <string name="favorite_team">FAVORITE TEAM</string>
     <string name="favorite_team_hint">Favorite Team</string>
+    <string name="title_activity_favorite_team">FavoriteTeamActivity</string>
+    <string name="title_activity_email_sign_up">EmailSignUpActivity</string>
+    <string name="email_address">EMAIL ADDRESS</string>
+    <string name="password">PASSWORD</string>
+    <string name="email_address_hint">email</string>
+    <string name="insert_password_hint">insert password</string>
+    <string name="repeat_password">REPEAT PASSWORD</string>
+    <string name="repeat_password_hint">repeat password</string>
+    <string name="title_activity_auto_draft_step1">AutoDraftStep1Activity</string>
+    <string name="autodraft_prediction_text">Predict at least 4 results among the upcoming games:</string>
+    <string name="autodraft_prediction_supporting_text">(tap on the team names to set a WIN)</string>
 </resources>
