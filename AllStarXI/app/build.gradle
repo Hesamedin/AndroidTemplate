@@ -10,10 +10,20 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            storeFile file("../../../keystores/allstar-release-key.keystore")
+            storePassword System.console().readLine("Store password: ")
+            keyAlias "allstar"
+            keyPassword System.console().readLine("Key password: ")
+        }
+
+    }
     buildTypes {
         release {
-            runProguard false
+            runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
         }
     }
 }

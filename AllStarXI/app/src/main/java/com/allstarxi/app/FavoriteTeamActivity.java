@@ -15,8 +15,6 @@ import java.util.ArrayList;
 public class FavoriteTeamActivity extends Activity implements AdapterView.OnItemClickListener
 {
     ListView favoriteTeamListView;
-    ArrayAdapter arrayAdapter;
-    ArrayList teamList;
     String selectedTeam;
 
     @Override
@@ -25,21 +23,24 @@ public class FavoriteTeamActivity extends Activity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_team);
 
+        FlagTitle flagTitleData[] = new FlagTitle[]
+        {
+            new FlagTitle(R.drawable._0000_uruguay, "Uruguay")
+        };
+
+        FlagTitleAdapter adapter = new FlagTitleAdapter(this, R.layout.autodraft_stepone_item_row, flagTitleData);
+
         favoriteTeamListView = (ListView)findViewById(R.id.favorite_team_listview);
+        favoriteTeamListView.setAdapter(adapter);
 
+        /* header sample code
+
+        View header = (View)getLayoutInflater().inflate(R.layout.listview_header_row, null);
+        listView1.addHeaderView(header);
+
+         */
         favoriteTeamListView.setOnItemClickListener(this);
-
-        teamList = new ArrayList<String>();
-
-        teamList.add("Argentina");
-        teamList.add("Brazil");
-        teamList.add("England");
-
-
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, teamList);
-
-        favoriteTeamListView.setAdapter(arrayAdapter);
-        arrayAdapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
 

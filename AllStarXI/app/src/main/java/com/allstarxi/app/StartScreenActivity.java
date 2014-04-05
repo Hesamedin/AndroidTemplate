@@ -1,6 +1,7 @@
 package com.allstarxi.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,10 +48,19 @@ public class StartScreenActivity extends Activity implements View.OnClickListene
         switch (v.getId())
         {
             case R.id.connect_facebook_button:
+                Intent toProfileSetupIntent = new Intent(this, ProfileSetupActivity.class);
+                //toProfileSetupIntent.putExtra("selected", selected);
+                startActivity(toProfileSetupIntent);
                 break;
             case R.id.connect_twitter_button:
+                Intent toProfileSetupIntent = new Intent(this, ProfileSetupActivity.class);
+                //toProfileSetupIntent.putExtra("selected", selected);
+                startActivity(toProfileSetupIntent);
                 break;
             case R.id.connect_email_button:
+                Intent toEmailSignupIntent = new Intent(this, EmailSignUpActivity.class);
+                //toProfileSetupIntent.putExtra("selected", selected);
+                startActivity(toEmailSignupIntent);
                 break;
             case R.id.have_account_button:
                 break;
