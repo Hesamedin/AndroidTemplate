@@ -7,7 +7,7 @@
     </style>
 
     <style name="AllStarActionBarTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:background">"@color/allStarDarkGreen"</item>
+        <item name="android:background">@color/allStarDarkGreen</item>
         <item name="android:titleTextStyle">@style/AllStarActionBarTextStyle</item>
     </style>
 

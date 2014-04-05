@@ -28,4 +28,11 @@
     <string name="title_activity_auto_draft_step1">AutoDraftStep1Activity</string>
     <string name="autodraft_prediction_text">Predict at least 4 results among the upcoming games:</string>
     <string name="autodraft_prediction_supporting_text">(tap on the team names to set a WIN)</string>
+    <string name="title_activity_auto_draft_step2">AutoDraftStep2Activity</string>
+    <string name="title_activity_auto_draft_step3">AutoDraftStep3Activity</string>
+    <string name="title_activity_team_page">TeamPageActivity</string>
+    <string name="title_activity_transfers">TransfersActivity</string>
+    <string name="title_activity_leagues">LeaguesActivity</string>
+    <string name="title_activity_fixtures">FixturesActivity</string>
+
 </resources>

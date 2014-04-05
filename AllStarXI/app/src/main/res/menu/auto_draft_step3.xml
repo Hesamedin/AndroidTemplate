@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.allstarxi.app.AutoDraftStep1Activity" >
-    
+    tools:context="com.allstarxi.app.AutoDraftStep3Activity" >
+
     <item android:id="@+id/action_next"
         android:title="Next"
         android:orderInCategory="100"

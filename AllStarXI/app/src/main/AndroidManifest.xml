@@ -32,6 +32,30 @@
             android:name="com.allstarxi.app.AutoDraftStep1Activity"
             android:label="@string/title_activity_auto_draft_step1" >
         </activity>
+        <activity
+            android:name="com.allstarxi.app.AutoDraftStep2Activity"
+            android:label="@string/title_activity_auto_draft_step2" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.AutoDraftStep3Activity"
+            android:label="@string/title_activity_auto_draft_step3" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.TeamPageActivity"
+            android:label="@string/title_activity_team_page" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.TransfersActivity"
+            android:label="@string/title_activity_transfers" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.LeaguesActivity"
+            android:label="@string/title_activity_leagues" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.FixturesActivity"
+            android:label="@string/title_activity_fixtures" >
+        </activity>
     </application>
 
 </manifest>

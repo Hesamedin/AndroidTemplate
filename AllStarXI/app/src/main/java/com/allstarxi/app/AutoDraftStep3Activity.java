@@ -7,12 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class AutoDraftStep1Activity extends Activity {
+public class AutoDraftStep3Activity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auto_draft_step1);
+        setContentView(R.layout.activity_auto_draft_step3);
     }
 
 
@@ -20,7 +20,7 @@ public class AutoDraftStep1Activity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.auto_draft_step1, menu);
+        getMenuInflater().inflate(R.menu.auto_draft_step3, menu);
         return true;
     }
 
@@ -33,7 +33,7 @@ public class AutoDraftStep1Activity extends Activity {
 
         if (id == R.id.action_next)
         {
-            Intent toAutodraftNextIntent = new Intent(this, AutoDraftStep2Activity.class);
+            Intent toAutodraftNextIntent = new Intent(this, AutoDraftStep4Activity.class);
             //toProfileSetupIntent.putExtra("selected", selected);
             startActivity(toAutodraftNextIntent);
             return true;

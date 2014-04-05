@@ -12,10 +12,17 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("../../../keystores/allstar-release-key.keystore")
-            storePassword System.console().readLine("Store password: ")
-            keyAlias "allstar"
-            keyPassword System.console().readLine("Key password: ")
+
+            gradle.taskGraph.whenReady { taskGraph ->
+                if(taskGraph.hasTask(':app:assembleRelease')) {
+                    storeFile file("../../../keystores/allstar-release-key.keystore")
+                    storePassword System.console().readLine("Store password: ")
+                    keyAlias "allstar"
+                    keyPassword System.console().readLine("Key password: ")
+                }
+            }
+
+
         }
 
     }
