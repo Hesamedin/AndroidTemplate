@@ -6,15 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import java.util.ArrayList;
 
 
 public class FavoriteTeamActivity extends Activity implements AdapterView.OnItemClickListener
 {
     ListView favoriteTeamListView;
+    FlagTitleAdapter adapter;
     String selectedTeam;
 
     @Override
@@ -28,7 +26,7 @@ public class FavoriteTeamActivity extends Activity implements AdapterView.OnItem
             new FlagTitle(R.drawable._0000_uruguay, "Uruguay")
         };
 
-        FlagTitleAdapter adapter = new FlagTitleAdapter(this, R.layout.autodraft_stepone_item_row, flagTitleData);
+        adapter = new FlagTitleAdapter(this, R.layout.flagcountry_item_row, flagTitleData);
 
         favoriteTeamListView = (ListView)findViewById(R.id.favorite_team_listview);
         favoriteTeamListView.setAdapter(adapter);
@@ -67,6 +65,6 @@ public class FavoriteTeamActivity extends Activity implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView parent, View view, int position, long id)
     {
-        selectedTeam = (String) arrayAdapter.getItem(position);
+        selectedTeam = (String) adapter.getItem(position).country;
     }
 }

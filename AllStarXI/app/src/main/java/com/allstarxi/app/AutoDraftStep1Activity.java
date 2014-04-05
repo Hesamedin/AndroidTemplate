@@ -11,7 +11,7 @@ public class AutoDraftStep1Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auto_draft_step1_header);
+        setContentView(R.layout.activity_auto_draft_step1);
     }
 
 

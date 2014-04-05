@@ -1,6 +1,7 @@
 package com.allstarxi.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +15,6 @@ public class ProfileSetupActivity extends Activity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,7 +30,12 @@ public class ProfileSetupActivity extends Activity implements View.OnClickListen
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_next)
+        {
+            Intent toAutodraftIntent = new Intent(this, AutoDraftStep1Activity.class);
+            //toProfileSetupIntent.putExtra("selected", selected);
+            startActivity(toAutodraftIntent);
             return true;
         }
         return super.onOptionsItemSelected(item);

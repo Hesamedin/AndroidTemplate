@@ -45,15 +45,17 @@ public class StartScreenActivity extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v)
     {
+        Intent toProfileSetupIntent;
+
         switch (v.getId())
         {
             case R.id.connect_facebook_button:
-                Intent toProfileSetupIntent = new Intent(this, ProfileSetupActivity.class);
+                toProfileSetupIntent = new Intent(this, ProfileSetupActivity.class);
                 //toProfileSetupIntent.putExtra("selected", selected);
                 startActivity(toProfileSetupIntent);
                 break;
             case R.id.connect_twitter_button:
-                Intent toProfileSetupIntent = new Intent(this, ProfileSetupActivity.class);
+                toProfileSetupIntent = new Intent(this, ProfileSetupActivity.class);
                 //toProfileSetupIntent.putExtra("selected", selected);
                 startActivity(toProfileSetupIntent);
                 break;
