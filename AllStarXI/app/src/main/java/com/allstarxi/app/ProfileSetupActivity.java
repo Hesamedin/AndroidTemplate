@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class ProfileSetupActivity extends Activity implements View.OnClickListener{
+public class ProfileSetupActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,27 @@ public class ProfileSetupActivity extends Activity implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
+        Intent toAutodraftIntent;
+        Intent toFavoriteTeamIntent;
 
+        switch (v.getId())
+        {
+            case R.id.change_profile_pic_button:
+                //toAutodraftIntent = new Intent(this, ProfileSetupActivity.class);
+                //toProfileSetupIntent.putExtra("selected", selected);
+                //startActivity(toProfileSetupIntent);
+                break;
+            case R.id.favorite_team_button:
+                toFavoriteTeamIntent = new Intent(this, FavoriteTeamActivity.class);
+                //toProfileSetupIntent.putExtra("selected", selected);
+                startActivity(toFavoriteTeamIntent);
+                break;
+            case R.id.to_autodraft_button:
+                toAutodraftIntent = new Intent(this, AutoDraftStep1Activity.class);
+                startActivity(toAutodraftIntent);
+                break;
+        }
     }
 }

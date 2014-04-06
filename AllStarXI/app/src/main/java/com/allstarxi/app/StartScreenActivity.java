@@ -1,5 +1,6 @@
 package com.allstarxi.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ public class StartScreenActivity extends Activity implements View.OnClickListene
 
         Button facebookButton = (Button)findViewById(R.id.connect_facebook_button);
         facebookButton.setOnClickListener(this);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.show();
+
     }
 
 

@@ -34,5 +34,6 @@
     <string name="title_activity_transfers">TransfersActivity</string>
     <string name="title_activity_leagues">LeaguesActivity</string>
     <string name="title_activity_fixtures">FixturesActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
