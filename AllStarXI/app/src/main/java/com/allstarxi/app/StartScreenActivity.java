@@ -9,6 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.Response;
+
 
 public class StartScreenActivity extends Activity implements View.OnClickListener {
 
@@ -24,6 +28,33 @@ public class StartScreenActivity extends Activity implements View.OnClickListene
         ActionBar actionBar = getActionBar();
         actionBar.show();
 
+        /*ContentDownloader cd = new ContentDownloader();
+        String test = new String();
+        test = cd.getServerResponseByHttpGet("http://asxi.fpus.eu/api/teams", "Authorization: Token 1234567890ABCDEF");
+        System.out.println(test);*/
+
+        /*String string = Ion.with(this, "http://asxi.fpus.eu/api/teams")
+        .setHeader("Content-Type", "application/json")
+        .setHeader("Authorization","Token 1234567890ABCDEF")
+        .asString();
+
+        System.out.println(string);*/
+
+        Ion.with(getApplicationContext())
+                .load("http://asxi.fpus.eu/api/teams")
+                .setHeader("Content-Type", "application/json")
+                .setHeader("Authorization","Token 1234567890ABCDEF")
+                .asString()
+                .withResponse()
+                .setCallback(new FutureCallback<Response<String>>() {
+                    @Override
+                    public void onCompleted(Exception e, Response<String> result) {
+                        // print the response code, ie, 200
+                        System.out.println(result.getHeaders().getResponseCode());
+                        // print the String that was downloaded
+                        System.out.println(result.getResult());
+                    }
+                });
     }
 
 
