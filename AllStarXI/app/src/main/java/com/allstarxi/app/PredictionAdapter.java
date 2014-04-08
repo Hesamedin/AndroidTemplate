@@ -2,28 +2,25 @@ package com.allstarxi.app;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 /**
- * Created by liam on 4/5/14.
+ * Created by liam on 4/8/14.
  */
-public class FlagTitleAdapter extends BaseAdapter
+public class PredictionAdapter extends BaseAdapter
 {
     Context mContext;
     LayoutInflater mInflater;
     public JsonArray mJsonArray;
 
-    public FlagTitleAdapter(Context context, LayoutInflater inflater)
+    public PredictionAdapter(Context context, LayoutInflater inflater)
     {
         mContext = context;
         mInflater = inflater;
@@ -68,25 +65,30 @@ public class FlagTitleAdapter extends BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        FlagTitleHolder holder;
+        PredictionHolder holder;
 
         if(convertView == null)
         {
             LayoutInflater inflater = ((Activity)mContext).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.flagcountry_item_row, parent, false);
+            convertView = inflater.inflate(R.layout.autodraft_predict_item_row, parent, false);
 
-            holder = new FlagTitleHolder();
-            holder.flagIcon = (ImageView)convertView.findViewById(R.id.imgIcon);
-            holder.countryTitle = (TextView)convertView.findViewById(R.id.txtTitle);
+            holder = new PredictionHolder();
+            holder.leftButton   = (ToggleButton)convertView.findViewById(R.id.predict_left_win_button);
+            holder.middleButton = (ToggleButton)convertView.findViewById(R.id.predict_tie_button);
+            holder.rightButton  = (ToggleButton)convertView.findViewById(R.id.predict_right_win_button);
 
             convertView.setTag(holder);
         }
         else
         {
-            holder = (FlagTitleHolder)convertView.getTag();
+            holder = (PredictionHolder)convertView.getTag();
         }
 
-        JsonObject jsonObject = (JsonObject)getItem(position);
+        holder.leftButton.setText("test");
+        holder.leftButton.setText("tie");
+        holder.leftButton.setText("test");
+
+        /*JsonObject jsonObject = (JsonObject)getItem(position);
 
         if(jsonObject.has("name"))
         {
@@ -101,14 +103,15 @@ public class FlagTitleAdapter extends BaseAdapter
         if(jsonObject.has(""))
         {
 
-        }
+        }*/
 
         return convertView;
     }
 
-    static class FlagTitleHolder
+    static class PredictionHolder
     {
-        ImageView flagIcon;
-        TextView countryTitle;
+        ToggleButton leftButton;
+        ToggleButton middleButton;
+        ToggleButton rightButton;
     }
 }

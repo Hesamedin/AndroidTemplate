@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 
 public class ProfileSetupActivity extends Activity implements View.OnClickListener {
@@ -14,6 +15,15 @@ public class ProfileSetupActivity extends Activity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
+
+        Button changeProfileButton = (Button)findViewById(R.id.change_profile_pic_button);
+        changeProfileButton.setOnClickListener(this);
+
+        Button favoriteTeamButton = (Button)findViewById(R.id.favorite_team_button);
+        favoriteTeamButton.setOnClickListener(this);
+
+        Button toAutodraftButton = (Button)findViewById(R.id.to_autodraft_button);
+        toAutodraftButton.setOnClickListener(this);
     }
 
     @Override

@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
 
 public class FavoriteTeamActivity extends Activity implements AdapterView.OnItemClickListener
 {
@@ -21,24 +25,25 @@ public class FavoriteTeamActivity extends Activity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_team);
 
-        FlagTitle flagTitleData[] = new FlagTitle[]
-        {
-            new FlagTitle(R.drawable._0000_uruguay, "Uruguay")
-        };
-
-        adapter = new FlagTitleAdapter(this, R.layout.flagcountry_item_row, flagTitleData);
-
         favoriteTeamListView = (ListView)findViewById(R.id.favorite_team_listview);
+        favoriteTeamListView.setOnItemClickListener(this);
+
+        adapter = new FlagTitleAdapter(this, getLayoutInflater());
         favoriteTeamListView.setAdapter(adapter);
 
-        /* header sample code
-
-        View header = (View)getLayoutInflater().inflate(R.layout.listview_header_row, null);
-        listView1.addHeaderView(header);
-
-         */
-        favoriteTeamListView.setOnItemClickListener(this);
-        adapter.notifyDataSetChanged();
+        Ion.with(getApplicationContext(), "http://asxi.fpus.eu/api/teams")
+                .setHeader("Content-Type", "application/json")
+                .setHeader("Authorization", "Token 1234567890ABCDEF")
+                .asJsonObject()
+                .setCallback(new FutureCallback<JsonObject>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonObject result)
+                    {
+                        // do stuff with the result or error
+                        System.out.println(result.toString());
+                        adapter.updateData(result.get("teams").getAsJsonArray());
+                    }
+                });
     }
 
 
@@ -65,6 +70,8 @@ public class FavoriteTeamActivity extends Activity implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView parent, View view, int position, long id)
     {
-        selectedTeam = (String) adapter.getItem(position).country;
+        JsonObject selectedElement = (JsonObject)adapter.getItem(position);
+        selectedTeam = selectedElement.get("name").getAsString();
+        super.finish();
     }
 }
