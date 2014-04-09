@@ -4,14 +4,92 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.nolanlawson.supersaiyan.SectionedListAdapter;
+import com.nolanlawson.supersaiyan.Sectionizer;
 
 
-public class TeamPageActivity extends Activity {
+public class TeamPageActivity extends Activity implements AdapterView.OnItemClickListener
+{
+
+    ListView playerDataListView;
+    PlayerDataAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_page);
+
+        playerDataListView = (ListView)findViewById(R.id.teamListView);
+        playerDataListView.setOnItemClickListener(this);
+
+        adapter = new PlayerDataAdapter(this, getLayoutInflater());
+
+        final String json = "{\n" +
+                "    \"players\": [\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name1\",\n" +
+                "            \"price\": \"price1\",\n" +
+                "            \"type\": \"gk\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name2\",\n" +
+                "            \"price\": \"price2\",\n" +
+                "            \"type\": \"def\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name3\",\n" +
+                "            \"price\": \"price3\",\n" +
+                "            \"type\": \"midfielders\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name4\",\n" +
+                "            \"price\": \"price4\",\n" +
+                "            \"type\": \"midfielders\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "} ";
+
+        try
+        {
+            JsonObject object = (JsonObject)new JsonParser().parse(json);
+            JsonArray array = object.getAsJsonArray("players");
+            adapter.mJsonArray = array;
+            adapter.notifyDataSetChanged();
+        }
+        catch (JsonParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        SectionedListAdapter<PlayerDataAdapter> sectionedAdapter =
+                SectionedListAdapter.Builder.create(this, adapter)
+                        .setSectionizer(new Sectionizer<JsonObject>(){
+
+                            @Override
+                            public CharSequence toSection(JsonObject item) {
+                                return item.get("type").getAsString();
+                            }
+                        })
+                        .sortKeys()
+                        .sortValues()
+                        .build();
+
+        playerDataListView.setAdapter(sectionedAdapter);
+
+
     }
 
 
@@ -35,4 +113,8 @@ public class TeamPageActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
 }

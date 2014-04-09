@@ -60,6 +60,14 @@
             android:name="com.allstarxi.app.AutoDraftStep4Activity"
             android:label="@string/title_activity_auto_draft_step4" >
         </activity>
+        <activity
+            android:name="com.allstarxi.app.TeamPageWithDrawerActivity"
+            android:label="@string/title_activity_team_page_with_drawer" >
+        </activity>
+        <activity
+            android:name="com.allstarxi.app.MatchesActivity"
+            android:label="@string/title_activity_matches" >
+        </activity>
     </application>
 
 </manifest>

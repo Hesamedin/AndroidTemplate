@@ -26,7 +26,7 @@ public class AutoDraftStep4Activity extends Activity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_draft_step4);
 
-        playerDataListView = (ListView)findViewById(R.id.predict_results_listview);
+        playerDataListView = (ListView)findViewById(R.id.wanted_players_listview);
         playerDataListView.setOnItemClickListener(this);
 
         adapter = new PlayerDataAdapter(this, getLayoutInflater());
@@ -34,19 +34,22 @@ public class AutoDraftStep4Activity extends Activity implements AdapterView.OnIt
         final String json = "{\n" +
                 "    \"players\": [\n" +
                 "        {\n" +
-                "            \"country\": \"country1\",\n" +
-                "            \"name\": \"name1\"\n" +
-                "            \"price\": \"price1\"\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name1\",\n" +
+                "            \"price\": \"price1\",\n" +
+                "            \"type\": \"gk\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"country\": \"country2\",\n" +
-                "            \"name\": \"name2\"\n" +
-                "            \"price\": \"price2\"\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name2\",\n" +
+                "            \"price\": \"price2\",\n" +
+                "            \"type\": \"def\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"country\": \"country3\",\n" +
-                "            \"name\": \"name3\"\n" +
-                "            \"price\": \"price3\"\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name3\",\n" +
+                "            \"price\": \"price3\",\n" +
+                "            \"type\": \"midfielders\"\n" +
                 "        }\n" +
                 "    ]\n" +
                 "} ";
@@ -86,9 +89,9 @@ public class AutoDraftStep4Activity extends Activity implements AdapterView.OnIt
 
         if (id == R.id.action_next)
         {
-            Intent toAutodraftNextIntent = new Intent(this, TeamPageActivity.class);
+            Intent toTeamPageIntent = new Intent(this, TeamPageWithDrawerActivity.class);
             //toProfileSetupIntent.putExtra("selected", selected);
-            startActivity(toAutodraftNextIntent);
+            startActivity(toTeamPageIntent);
             return true;
         }
 

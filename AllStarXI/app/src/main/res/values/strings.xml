@@ -36,5 +36,38 @@
     <string name="title_activity_fixtures">FixturesActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_auto_draft_step4">AutoDraftStep4Activity</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>My Team</item>
+        <item>My Profile</item>
+        <item>Transfers</item>
+        <item>Leagues</item>
+        <item>Shop</item>
+        <item>Matches</item>
+        <item>Rankings</item>
+        <item>Settings</item>
+        <item>Last Round Score</item>
+        <item>Next Round In</item>
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_team_page_with_drawer">TeamPageWithDrawerActivity</string>
+    <string name="title_activity_matches">MatchesActivity</string>
 
 </resources>

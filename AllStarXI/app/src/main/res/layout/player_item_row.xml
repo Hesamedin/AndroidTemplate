@@ -18,8 +18,8 @@
         android:layout_marginBottom="5dp" />
 
     <TextView android:id="@+id/playerNameText"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
@@ -30,8 +30,8 @@
         android:layout_marginBottom="5dp" />
 
     <TextView android:id="@+id/playerPriceText"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"

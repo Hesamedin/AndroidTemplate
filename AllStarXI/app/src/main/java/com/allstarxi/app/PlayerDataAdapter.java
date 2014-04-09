@@ -105,7 +105,7 @@ public class PlayerDataAdapter extends BaseAdapter
         if(jsonObject.has("price"))
         {
             String price = jsonObject.get("price").getAsString();
-            holder.nameView.setText(price);
+            holder.priceView.setText(price);
         }
 
         return convertView;
