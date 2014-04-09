@@ -84,11 +84,10 @@ public class TeamPageActivity extends Activity implements AdapterView.OnItemClic
                             }
                         })
                         .sortKeys()
-                        .sortValues()
+                        //.sortValues()
                         .build();
 
         playerDataListView.setAdapter(sectionedAdapter);
-
 
     }
 

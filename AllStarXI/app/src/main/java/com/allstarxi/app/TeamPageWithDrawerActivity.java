@@ -15,31 +15,39 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TeamPageWithDrawerActivity extends Activity {
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.nolanlawson.supersaiyan.SectionedListAdapter;
+import com.nolanlawson.supersaiyan.Sectionizer;
 
+public class TeamPageWithDrawerActivity extends Activity implements AdapterView.OnItemClickListener {
+
+    // Drawer Related
     private String[] drawerListViewItems;
     private DrawerLayout drawerLayout;
     private ListView drawerListView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
+    // Frame Related
+    ListView playerDataListView;
+    PlayerDataAdapter adapter;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_page_with_drawer);
 
-        // get list items from strings.xml
+        // Drawer Related
         drawerListViewItems = getResources().getStringArray(R.array.nav_drawer_items);
-        // get ListView defined in activity_main.xml
         drawerListView = (ListView) findViewById(R.id.left_drawer);
-
-        // Set the adapter for the list view
         drawerListView.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, drawerListViewItems));
 
-        // 2. App Icon
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        // 2.1 create ActionBarDrawerToggle
         actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -56,6 +64,68 @@ public class TeamPageWithDrawerActivity extends Activity {
         //drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         drawerListView.setOnItemClickListener(new DrawerItemClickListener());
+
+        // Frame Related
+        playerDataListView = (ListView)findViewById(R.id.teamListView);
+        playerDataListView.setOnItemClickListener(this);
+
+        adapter = new PlayerDataAdapter(this, getLayoutInflater());
+
+        final String json = "{\n" +
+                "    \"players\": [\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name1\",\n" +
+                "            \"price\": \"price1\",\n" +
+                "            \"type\": \"gk\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name2\",\n" +
+                "            \"price\": \"price2\",\n" +
+                "            \"type\": \"def\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name3\",\n" +
+                "            \"price\": \"price3\",\n" +
+                "            \"type\": \"midfielders\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"country\": \"algeria\",\n" +
+                "            \"name\": \"name4\",\n" +
+                "            \"price\": \"price4\",\n" +
+                "            \"type\": \"midfielders\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "} ";
+
+        try
+        {
+            JsonObject object = (JsonObject)new JsonParser().parse(json);
+            JsonArray array = object.getAsJsonArray("players");
+            adapter.mJsonArray = array;
+            adapter.notifyDataSetChanged();
+        }
+        catch (JsonParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        SectionedListAdapter<PlayerDataAdapter> sectionedAdapter =
+                SectionedListAdapter.Builder.create(this, adapter)
+                        .setSectionizer(new Sectionizer<JsonObject>(){
+
+                            @Override
+                            public CharSequence toSection(JsonObject item) {
+                                return item.get("type").getAsString();
+                            }
+                        })
+                        .sortKeys()
+                        //.sortValues()
+                        .build();
+
+        playerDataListView.setAdapter(sectionedAdapter);
     }
 
     @Override
@@ -135,6 +205,11 @@ public class TeamPageWithDrawerActivity extends Activity {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
