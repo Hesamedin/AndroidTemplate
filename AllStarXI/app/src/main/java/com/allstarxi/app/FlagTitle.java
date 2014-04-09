@@ -3,7 +3,8 @@ package com.allstarxi.app;
 /**
  * Created by liam on 4/5/14.
  */
-public class FlagTitle {
+public class FlagTitle
+{
     public int flag;
     public String country;
 

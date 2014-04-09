@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import com.google.gson.JsonArray;
@@ -65,7 +66,7 @@ public class PredictionAdapter extends BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        PredictionHolder holder;
+        final PredictionHolder holder;
 
         if(convertView == null)
         {
@@ -84,9 +85,62 @@ public class PredictionAdapter extends BaseAdapter
             holder = (PredictionHolder)convertView.getTag();
         }
 
-        holder.leftButton.setText("test");
-        holder.leftButton.setText("tie");
-        holder.leftButton.setText("test");
+        holder.leftButton.setText("leftWin");
+        holder.middleButton.setText("tie");
+        holder.rightButton.setText("rightWin");
+
+        holder.leftButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if (isChecked)
+                {
+                   System.out.println("CHECKED LEFT");
+                   holder.middleButton.setChecked(false);
+                   holder.rightButton.setChecked(false);
+                }
+                else
+                {
+                    System.out.println("UNCHECKED LEFT");
+
+                }
+            }
+        });
+
+        holder.middleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if (isChecked)
+                {
+                    System.out.println("CHECKED MIDDLE");
+                    holder.leftButton.setChecked(false);
+                    holder.rightButton.setChecked(false);
+                }
+                else
+                {
+                    System.out.println("UNCHECKED MIDDLE");
+                }
+            }
+        });
+
+        holder.rightButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if (isChecked)
+                {
+                    System.out.println("CHECKED RIGHT");
+                    holder.leftButton.setChecked(false);
+                    holder.middleButton.setChecked(false);
+                }
+                else
+                {
+                    System.out.println("UNCHECKED RIGHT");
+                }
+            }
+        });
+
 
         /*JsonObject jsonObject = (JsonObject)getItem(position);
 

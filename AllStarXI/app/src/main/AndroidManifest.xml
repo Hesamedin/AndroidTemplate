@@ -56,6 +56,10 @@
             android:name="com.allstarxi.app.FixturesActivity"
             android:label="@string/title_activity_fixtures" >
         </activity>
+        <activity
+            android:name="com.allstarxi.app.AutoDraftStep4Activity"
+            android:label="@string/title_activity_auto_draft_step4" >
+        </activity>
     </application>
 
 </manifest>

@@ -21,6 +21,8 @@ public class AutoDraftStep1Activity extends Activity implements AdapterView.OnIt
     ListView predictionListView;
     PredictionAdapter adapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -76,7 +78,6 @@ public class AutoDraftStep1Activity extends Activity implements AdapterView.OnIt
                         adapter.updateData(result.get("teams").getAsJsonArray());
                     }
                 });*/
-
     }
 
 
