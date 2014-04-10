@@ -1,10 +1,11 @@
 package com.allstarxi.app;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,24 +16,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.nolanlawson.supersaiyan.SectionedListAdapter;
-import com.nolanlawson.supersaiyan.Sectionizer;
+//import android.app.FragmentActivity;
 
-public class TeamPageWithDrawerActivity extends Activity implements AdapterView.OnItemClickListener {
+public class TeamPageWithDrawerActivity
+        extends android.support.v4.app.FragmentActivity
+        implements TeamFragment.OnFragmentInteractionListener,
+        ProfileFragment.OnFragmentInteractionListener,
+        TransfersFragment.OnFragmentInteractionListener,
+        LeaguesFragment.OnFragmentInteractionListener,
+        ShopFragment.OnFragmentInteractionListener,
+        MatchesFragment.OnFragmentInteractionListener,
+        RankingsFragment.OnFragmentInteractionListener,
+        SettingsFragment.OnFragmentInteractionListener {
 
     // Drawer Related
     private String[] drawerListViewItems;
     private DrawerLayout drawerLayout;
     private ListView drawerListView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-
-    // Frame Related
-    ListView playerDataListView;
-    PlayerDataAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,67 +66,24 @@ public class TeamPageWithDrawerActivity extends Activity implements AdapterView.
 
         drawerListView.setOnItemClickListener(new DrawerItemClickListener());
 
-        // Frame Related
-        playerDataListView = (ListView)findViewById(R.id.teamListView);
-        playerDataListView.setOnItemClickListener(this);
+        // Load initial fragment
 
-        adapter = new PlayerDataAdapter(this, getLayoutInflater());
+        FragmentManager fm = this.getSupportFragmentManager();
 
-        final String json = "{\n" +
-                "    \"players\": [\n" +
-                "        {\n" +
-                "            \"country\": \"algeria\",\n" +
-                "            \"name\": \"name1\",\n" +
-                "            \"price\": \"price1\",\n" +
-                "            \"type\": \"gk\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"country\": \"algeria\",\n" +
-                "            \"name\": \"name2\",\n" +
-                "            \"price\": \"price2\",\n" +
-                "            \"type\": \"def\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"country\": \"algeria\",\n" +
-                "            \"name\": \"name3\",\n" +
-                "            \"price\": \"price3\",\n" +
-                "            \"type\": \"midfielders\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"country\": \"algeria\",\n" +
-                "            \"name\": \"name4\",\n" +
-                "            \"price\": \"price4\",\n" +
-                "            \"type\": \"midfielders\"\n" +
-                "        }\n" +
-                "    ]\n" +
-                "} ";
+        android.support.v4.app.Fragment frag1 = fm.findFragmentById(R.id.content_frame);
 
-        try
-        {
-            JsonObject object = (JsonObject)new JsonParser().parse(json);
-            JsonArray array = object.getAsJsonArray("players");
-            adapter.mJsonArray = array;
-            adapter.notifyDataSetChanged();
-        }
-        catch (JsonParseException e)
-        {
-            e.printStackTrace();
+        if ( frag1 == null ) {
+            frag1 = TeamFragment.newInstance("test1","test2");
+            FragmentHelper.initFragment( frag1, R.id.content_frame, fm);
+
+
         }
 
-        SectionedListAdapter<PlayerDataAdapter> sectionedAdapter =
-                SectionedListAdapter.Builder.create(this, adapter)
-                        .setSectionizer(new Sectionizer<JsonObject>(){
-
-                            @Override
-                            public CharSequence toSection(JsonObject item) {
-                                return item.get("type").getAsString();
-                            }
-                        })
-                        .sortKeys()
-                        //.sortValues()
-                        .build();
-
-        playerDataListView.setAdapter(sectionedAdapter);
+        /*Fragment frag2 = fm.findFragmentById(R.id.container2);
+        if ( frag2 == null ) {
+            frag2 = Panel2Fragment.newInstance();
+            FragmentHelper.initFragment( frag2, R.id.container2, fm);
+        }*/
     }
 
     @Override
@@ -165,50 +123,52 @@ public class TeamPageWithDrawerActivity extends Activity implements AdapterView.
 
     private void goToScreen(int position)
     {
+        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+        android.support.v4.app.Fragment newFragment = new android.support.v4.app.Fragment();
+
         switch(position)
         {
             case 0:
-                Intent toTeamPageIntent;
-                toTeamPageIntent = new Intent(this, TeamPageWithDrawerActivity.class);
-                startActivity(toTeamPageIntent);
+                newFragment = new TeamFragment();
                 break;
             case 1:
-                    /*Intent toProfileIntent = new Intent(this, TeamPageWithDrawerActivity.class);
-                    //toProfileSetupIntent.putExtra("selected", selected);
-                    startActivity(toTeamPageIntent);*/
+                newFragment = new ProfileFragment();
                 break;
             case 2:
-                Intent toTransfersIntent = new Intent(this, TransfersActivity.class);
-                //toProfileSetupIntent.putExtra("selected", selected);
-                startActivity(toTransfersIntent);
+                newFragment = new TransfersFragment();
                 break;
             case 3:
-                Intent toLeaguesIntent = new Intent(this, LeaguesActivity.class);
-                //toProfileSetupIntent.putExtra("selected", selected);
-                startActivity(toLeaguesIntent);
+                newFragment = new LeaguesFragment();
                 break;
             case 4:
+                newFragment = new ShopFragment();
                 break;
             case 5:
-                Intent toMatchesIntent = new Intent(this, MatchesActivity.class);
-                //toProfileSetupIntent.putExtra("selected", selected);
-                startActivity(toMatchesIntent);
+                newFragment = new MatchesFragment();
                 break;
             case 6:
+                newFragment = new RankingsFragment();
                 break;
             case 7:
+                newFragment = new SettingsFragment();
                 break;
             case 8:
+                newFragment = new ShopFragment();
                 break;
             case 9:
+                newFragment = new ShopFragment();
                 break;
             default:
                 break;
         }
+
+        transaction.replace(R.id.content_frame, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onFragmentInteraction(Uri uri) {
 
     }
 

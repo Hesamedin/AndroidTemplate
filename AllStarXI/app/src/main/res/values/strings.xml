@@ -69,5 +69,6 @@
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="title_activity_team_page_with_drawer">TeamPageWithDrawerActivity</string>
     <string name="title_activity_matches">MatchesActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>
