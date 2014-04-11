@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.allstarxi.app.R;
+import com.allstarxi.app.activity.AutoDraftStep1Activity;
+import com.allstarxi.app.activity.FavoriteTeamActivity;
 
 
 public class ProfileSetupActivity extends Activity implements View.OnClickListener {

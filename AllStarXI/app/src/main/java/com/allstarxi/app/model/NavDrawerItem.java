@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.model;
 
 public class NavDrawerItem {
 

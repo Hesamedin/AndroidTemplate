@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.model;
 
 /**
  * Created by liam on 4/5/14.

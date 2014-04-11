@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.allstarxi.app.model.NavDrawerItem;
+import com.allstarxi.app.R;
 
 import java.util.ArrayList;
 

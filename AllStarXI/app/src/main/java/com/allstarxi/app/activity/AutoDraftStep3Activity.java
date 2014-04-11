@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.allstarxi.app.R;
+import com.allstarxi.app.adapter.FlagTitleAdapter;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;

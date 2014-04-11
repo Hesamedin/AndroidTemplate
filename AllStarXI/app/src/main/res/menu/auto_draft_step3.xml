@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.allstarxi.app.AutoDraftStep3Activity" >
+    tools:context="com.allstarxi.app.activity.AutoDraftStep3Activity" >
 
     <item android:id="@+id/action_next"
         android:title="Next"

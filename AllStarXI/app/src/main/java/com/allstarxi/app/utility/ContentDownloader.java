@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.utility;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

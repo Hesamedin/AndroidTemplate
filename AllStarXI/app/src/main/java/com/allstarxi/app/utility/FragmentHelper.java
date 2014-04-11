@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.utility;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

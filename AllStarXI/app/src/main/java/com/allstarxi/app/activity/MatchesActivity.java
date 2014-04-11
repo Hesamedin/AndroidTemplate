@@ -1,17 +1,19 @@
-package com.allstarxi.app;
+package com.allstarxi.app.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.allstarxi.app.R;
 
-public class FixturesActivity extends Activity {
+
+public class MatchesActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fixtures);
+        setContentView(R.layout.activity_matches);
     }
 
 
@@ -19,7 +21,7 @@ public class FixturesActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.fixtures, menu);
+        getMenuInflater().inflate(R.menu.matches, menu);
         return true;
     }
 

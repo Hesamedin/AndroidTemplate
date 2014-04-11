@@ -1,9 +1,11 @@
-package com.allstarxi.app;
+package com.allstarxi.app.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.allstarxi.app.R;
 
 
 public class EmailSignUpActivity extends Activity

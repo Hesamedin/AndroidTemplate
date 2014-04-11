@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.allstarxi.app.StartScreenActivity"
+            android:name=".activity.StartScreenActivity"
             android:label="Sign Up" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,56 +17,60 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.allstarxi.app.ProfileSetupActivity"
+            android:name=".activity.ProfileSetupActivity"
             android:label="@string/title_activity_profile_setup" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.FavoriteTeamActivity"
+            android:name=".activity.FavoriteTeamActivity"
             android:label="@string/title_activity_favorite_team" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.EmailSignUpActivity"
+            android:name=".activity.EmailSignUpActivity"
             android:label="@string/title_activity_email_sign_up" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.AutoDraftStep1Activity"
+            android:name=".activity.AutoDraftStep1Activity"
             android:label="@string/title_activity_auto_draft_step1" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.AutoDraftStep2Activity"
+            android:name=".activity.AutoDraftStep2Activity"
             android:label="@string/title_activity_auto_draft_step2" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.AutoDraftStep3Activity"
+            android:name=".activity.AutoDraftStep3Activity"
             android:label="@string/title_activity_auto_draft_step3" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.TeamPageActivity"
+            android:name=".activity.TeamPageActivity"
             android:label="@string/title_activity_team_page" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.TransfersActivity"
+            android:name=".activity.TransfersActivity"
             android:label="@string/title_activity_transfers" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.LeaguesActivity"
+            android:name=".activity.LeaguesActivity"
             android:label="@string/title_activity_leagues" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.FixturesActivity"
+            android:name=".activity.FixturesActivity"
             android:label="@string/title_activity_fixtures" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.AutoDraftStep4Activity"
+            android:name=".activity.AutoDraftStep4Activity"
             android:label="@string/title_activity_auto_draft_step4" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.TeamPageWithDrawerActivity"
+            android:name=".activity.TeamPageWithDrawerActivity"
             android:label="@string/title_activity_team_page_with_drawer" >
         </activity>
         <activity
-            android:name="com.allstarxi.app.MatchesActivity"
-            android:label="@string/title_activity_matches" >
+            android:name=".activity.MatchesActivity"
+            android:label="@string/title_activity_matches"
+            android:parentActivityName=".activity.StartScreenActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allstarxi.app.StartScreenActivity" />
         </activity>
     </application>
 

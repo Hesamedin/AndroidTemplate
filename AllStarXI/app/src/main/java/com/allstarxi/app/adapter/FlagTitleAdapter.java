@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,20 +10,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.allstarxi.app.R;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
- * Created by liam on 4/8/14.
+ * Created by liam on 4/5/14.
  */
-public class PlayerDataAdapter extends BaseAdapter
+public class FlagTitleAdapter extends BaseAdapter
 {
     Context mContext;
     LayoutInflater mInflater;
     public JsonArray mJsonArray;
 
-    public PlayerDataAdapter(Context context, LayoutInflater inflater)
+    public FlagTitleAdapter(Context context, LayoutInflater inflater)
     {
         mContext = context;
         mInflater = inflater;
@@ -68,53 +69,47 @@ public class PlayerDataAdapter extends BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        final PlayerDataHolder holder;
+        FlagTitleHolder holder;
 
         if(convertView == null)
         {
             LayoutInflater inflater = ((Activity)mContext).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.player_item_row, parent, false);
+            convertView = inflater.inflate(R.layout.flagcountry_item_row, parent, false);
 
-            holder = new PlayerDataHolder();
-            holder.flagView  = (ImageView)convertView.findViewById(R.id.flagIcon);
-            holder.nameView  = (TextView)convertView.findViewById(R.id.playerNameText);
-            holder.priceView = (TextView)convertView.findViewById(R.id.playerPriceText);
+            holder = new FlagTitleHolder();
+            holder.flagIcon = (ImageView)convertView.findViewById(R.id.imgIcon);
+            holder.countryTitle = (TextView)convertView.findViewById(R.id.txtTitle);
 
             convertView.setTag(holder);
         }
         else
         {
-            holder = (PlayerDataHolder)convertView.getTag();
+            holder = (FlagTitleHolder)convertView.getTag();
         }
 
         JsonObject jsonObject = (JsonObject)getItem(position);
 
-        if(jsonObject.has("country"))
-        {
-            String countryName = jsonObject.get("country").getAsString();
-
-            Resources r = mContext.getResources();
-            int drawableID = getResourceId(countryName.toLowerCase(), "drawable", mContext.getPackageName());
-            holder.flagView.setImageResource(drawableID);
-        }
         if(jsonObject.has("name"))
         {
-            String playerName = jsonObject.get("name").getAsString();
-            holder.nameView.setText(playerName);
+            String countryName = jsonObject.get("name").getAsString();
+            holder.countryTitle.setText(countryName);
+
+            Resources r = mContext.getResources();
+            //int drawableId = r.getIdentifier("drawable/" + countryName.toLowerCase() + ".png", null, mContext.getPackageName());
+            int drawableID = getResourceId(countryName.toLowerCase(), "drawable", mContext.getPackageName());
+            holder.flagIcon.setImageResource(drawableID);
         }
-        if(jsonObject.has("price"))
+        if(jsonObject.has(""))
         {
-            String price = jsonObject.get("price").getAsString();
-            holder.priceView.setText(price);
+
         }
 
         return convertView;
     }
 
-    static class PlayerDataHolder
+    static class FlagTitleHolder
     {
-        ImageView flagView;
-        TextView  nameView;
-        TextView  priceView;
+        ImageView flagIcon;
+        TextView countryTitle;
     }
 }

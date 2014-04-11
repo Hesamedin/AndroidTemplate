@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.allstarxi.app.R;
 
 
 public class StartScreenActivity extends Activity implements View.OnClickListener {

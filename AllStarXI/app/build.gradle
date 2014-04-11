@@ -7,20 +7,24 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.2"
     }
     signingConfigs {
         release {
+            storeFile file("../../../keystores/allstar-release-key.keystore")
+            storePassword "stout52"
+            keyAlias "allstar"
+            keyPassword "stout52"
 
-            gradle.taskGraph.whenReady { taskGraph ->
+            /*gradle.taskGraph.whenReady { taskGraph ->
                 if(taskGraph.hasTask(':app:assembleRelease')) {
                     storeFile file("../../../keystores/allstar-release-key.keystore")
                     storePassword System.console().readLine("Store password: ")
                     keyAlias "allstar"
                     keyPassword System.console().readLine("Key password: ")
                 }
-            }
+            }*/
 
 
         }
@@ -31,6 +35,7 @@ android {
             runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
+            zipAlign true
         }
     }
 }

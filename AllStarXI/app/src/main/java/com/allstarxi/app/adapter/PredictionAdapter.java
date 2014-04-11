@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
+import com.allstarxi.app.R;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
