@@ -7,8 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.allstarxi.app.R;
+import com.allstarxi.app.adapter.LeagueDataAdapter;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 
 
 /**
@@ -20,7 +27,7 @@ import com.allstarxi.app.R;
  * create an instance of this fragment.
  *
  */
-public class LeaguesFragment extends Fragment {
+public class LeaguesFragment extends Fragment implements AdapterView.OnItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,6 +38,12 @@ public class LeaguesFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    ListView globalLeagueDataListView;
+    LeagueDataAdapter globalAdapter;
+
+    ListView customLeagueDataListView;
+    LeagueDataAdapter customAdapter;
 
     /**
      * Use this factory method to create a new instance of
@@ -64,9 +77,96 @@ public class LeaguesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leagues, container, false);
+                             Bundle savedInstanceState)
+    {
+        View returnView = inflater.inflate(R.layout.fragment_leagues, container, false);
+
+        // Frame Related
+        globalLeagueDataListView = (ListView)returnView.findViewById(R.id.globalLeaguesListView);
+        globalLeagueDataListView.setOnItemClickListener(this);
+
+        globalAdapter = new LeagueDataAdapter(getActivity(), getActivity().getLayoutInflater());
+
+        final String globalLeauesJson = "{\n" +
+                "    \"leagues\": [\n" +
+                "        {\n" +
+                "            \"name\": \"Overall League\",\n" +
+                "            \"rank\": \"5124\",\n" +
+                "            \"teams\": \"12532\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"name\": \"Brazil Fans\",\n" +
+                "            \"rank\": \"912\",\n" +
+                "            \"teams\": \"5320\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"name\": \"Turkey\",\n" +
+                "            \"rank\": \"312\",\n" +
+                "            \"teams\": \"955\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "} ";
+
+        try
+        {
+            JsonObject object = (JsonObject)new JsonParser().parse(globalLeauesJson);
+            JsonArray array = object.getAsJsonArray("leagues");
+            globalAdapter.mJsonArray = array;
+            View globalLeaguesHeader = getActivity().getLayoutInflater().inflate(R.layout.league_list_header, null);
+            globalLeagueDataListView.addHeaderView(globalLeaguesHeader);
+            globalLeagueDataListView.setAdapter(globalAdapter);
+            globalAdapter.notifyDataSetChanged();
+        }
+        catch (JsonParseException e)
+        {
+            e.printStackTrace();
+        }
+
+
+
+        customLeagueDataListView = (ListView)returnView.findViewById(R.id.customLeaguesListView);
+        customLeagueDataListView.setOnItemClickListener(this);
+
+        customAdapter = new LeagueDataAdapter(getActivity(), getActivity().getLayoutInflater());
+
+        final String customLeaguesJson = "{\n" +
+                "    \"leagues\": [\n" +
+                "        {\n" +
+                "            \"name\": \"Overall League\",\n" +
+                "            \"rank\": \"5124\",\n" +
+                "            \"teams\": \"12532\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"name\": \"Brazil Fans\",\n" +
+                "            \"rank\": \"912\",\n" +
+                "            \"teams\": \"5320\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"name\": \"Turkey\",\n" +
+                "            \"rank\": \"312\",\n" +
+                "            \"teams\": \"955\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "} ";
+
+        try
+        {
+            JsonObject object = (JsonObject)new JsonParser().parse(customLeaguesJson);
+            JsonArray array = object.getAsJsonArray("leagues");
+            customAdapter.mJsonArray = array;
+
+            View customLeaguesHeader = getActivity().getLayoutInflater().inflate(R.layout.league_list_header, null);
+            customLeagueDataListView.addHeaderView(customLeaguesHeader);
+
+            customLeagueDataListView.setAdapter(customAdapter);
+            customAdapter.notifyDataSetChanged();
+        }
+        catch (JsonParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        return returnView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +191,11 @@ public class LeaguesFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     /**

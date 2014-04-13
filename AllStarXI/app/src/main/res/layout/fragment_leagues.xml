@@ -1,13 +1,41 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+
     tools:context="com.allstarxi.app.fragment.LeaguesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello_leagues" />
+    <ListView
+        android:id="@+id/globalLeaguesListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></ListView>
 
-</FrameLayout>
+    <ListView
+        android:id="@+id/customLeaguesListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></ListView>
+    
+    <TextView
+        android:text="Create a league, invite your friends and let the competition begin!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="+ Create a League"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Have an invite code?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Join an Existing League"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
