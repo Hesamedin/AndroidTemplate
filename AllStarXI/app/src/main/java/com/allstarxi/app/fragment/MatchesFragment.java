@@ -7,8 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.allstarxi.app.R;
+import com.allstarxi.app.adapter.MatchesAdapter;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.nolanlawson.supersaiyan.SectionedListAdapter;
+import com.nolanlawson.supersaiyan.Sectionizer;
 
 
 /**
@@ -20,7 +29,8 @@ import com.allstarxi.app.R;
  * create an instance of this fragment.
  *
  */
-public class MatchesFragment extends Fragment {
+public class MatchesFragment extends Fragment implements AdapterView.OnItemClickListener
+{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,6 +41,9 @@ public class MatchesFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    ListView matchesDataListView;
+    MatchesAdapter adapter;
 
     /**
      * Use this factory method to create a new instance of
@@ -64,9 +77,73 @@ public class MatchesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
+        View returnView = inflater.inflate(R.layout.fragment_matches, container, false);
+
+        // Frame Related
+        matchesDataListView = (ListView)returnView.findViewById(R.id.matchesListView);
+        matchesDataListView.setOnItemClickListener(this);
+
+        adapter = new MatchesAdapter(getActivity(), getActivity().getLayoutInflater());
+
+        final String matchesJson = "{\n" +
+                "    \"matches\": [\n" +
+                "        {\n" +
+                "            \"left_country\": \"algeria\",\n" +
+                "            \"time\": \"20:30\",\n" +
+                "            \"right_country\": \"algeria\",\n" +
+                "            \"date\": \"SATURDAY,15th\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"left_country\": \"algeria\",\n" +
+                "            \"time\": \"20:30\",\n" +
+                "            \"right_country\": \"algeria\",\n" +
+                "            \"date\": \"SATURDAY,15th\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"left_country\": \"algeria\",\n" +
+                "            \"time\": \"20:30\",\n" +
+                "            \"right_country\": \"algeria\",\n" +
+                "            \"date\": \"SATURDAY,15th\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"left_country\": \"algeria\",\n" +
+                "            \"time\": \"20:30\",\n" +
+                "            \"right_country\": \"algeria\",\n" +
+                "            \"date\": \"SATURDAY,15th\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "} ";
+
+        try
+        {
+            JsonObject object = (JsonObject)new JsonParser().parse(matchesJson);
+            JsonArray array = object.getAsJsonArray("matches");
+            adapter.mJsonArray = array;
+            adapter.notifyDataSetChanged();
+        }
+        catch (JsonParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        SectionedListAdapter<MatchesAdapter> sectionedAdapter =
+                SectionedListAdapter.Builder.create(getActivity(), adapter)
+                        .setSectionizer(new Sectionizer<JsonObject>(){
+
+                            @Override
+                            public CharSequence toSection(JsonObject item) {
+                                return item.get("date").getAsString();
+                            }
+                        })
+                        .sortKeys()
+                        .build();
+
+        matchesDataListView.setAdapter(sectionedAdapter);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matches, container, false);
+        return returnView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +168,11 @@ public class MatchesFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     /**
