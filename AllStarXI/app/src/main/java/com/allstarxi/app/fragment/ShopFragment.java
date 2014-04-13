@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.fragment;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.allstarxi.app.R;
 
 
 /**

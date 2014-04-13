@@ -60,7 +60,7 @@ public class AutoDraftStep4Activity extends Activity implements AdapterView.OnIt
         {
             JsonObject object = (JsonObject)new JsonParser().parse(json);
             JsonArray array = object.getAsJsonArray("players");
-            adapter.mJsonArray = array;
+            adapter.mJsonArrayFull = array;
             adapter.notifyDataSetChanged();
         }
         catch (JsonParseException e)

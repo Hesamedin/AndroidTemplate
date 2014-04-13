@@ -22,32 +22,59 @@ public class PlayerDataAdapter extends BaseAdapter
 {
     Context mContext;
     LayoutInflater mInflater;
-    public JsonArray mJsonArray;
+    public JsonArray mJsonArrayFull;
+    public JsonArray mJsonArrayCurrent;
+
+    //public JsonArray
 
     public PlayerDataAdapter(Context context, LayoutInflater inflater)
     {
         mContext = context;
         mInflater = inflater;
-        mJsonArray = new JsonArray();
+        mJsonArrayFull = new JsonArray();
+        mJsonArrayCurrent = new JsonArray();
     }
+
+    public void getAllData()
+    {
+        mJsonArrayCurrent = mJsonArrayFull;
+    }
+    public void getDataSubset(String type)
+    {
+        // clear mJsonArrayCurrent
+        mJsonArrayCurrent = new JsonArray();
+
+        for(int i = 0; i < mJsonArrayFull.size(); i++)
+        {
+            JsonObject jsonObject = (JsonObject)mJsonArrayFull.get(i);
+
+            if(jsonObject.get("type").getAsString().equals(type))
+            {
+                mJsonArrayCurrent.add(jsonObject);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
 
     public void updateData(JsonArray jsonArray)
     {
         // update the adapter's dataset
-        mJsonArray = jsonArray;
+        mJsonArrayFull = jsonArray;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount()
     {
-        return mJsonArray.size();
+        return mJsonArrayCurrent.size();
     }
 
     @Override
     public JsonElement getItem(int position)
     {
-        return mJsonArray.get(position);
+        return mJsonArrayCurrent.get(position);
     }
 
     @Override

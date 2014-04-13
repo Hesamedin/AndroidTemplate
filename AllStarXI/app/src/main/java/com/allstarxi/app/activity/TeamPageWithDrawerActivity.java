@@ -17,15 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allstarxi.app.utility.FragmentHelper;
-import com.allstarxi.app.LeaguesFragment;
-import com.allstarxi.app.MatchesFragment;
-import com.allstarxi.app.ProfileFragment;
+import com.allstarxi.app.fragment.LeaguesFragment;
+import com.allstarxi.app.fragment.MatchesFragment;
+import com.allstarxi.app.fragment.ProfileFragment;
 import com.allstarxi.app.R;
-import com.allstarxi.app.RankingsFragment;
-import com.allstarxi.app.SettingsFragment;
-import com.allstarxi.app.ShopFragment;
-import com.allstarxi.app.TeamFragment;
-import com.allstarxi.app.TransfersFragment;
+import com.allstarxi.app.fragment.RankingsFragment;
+import com.allstarxi.app.fragment.SettingsFragment;
+import com.allstarxi.app.fragment.ShopFragment;
+import com.allstarxi.app.fragment.TeamFragment;
+import com.allstarxi.app.fragment.TransfersFragment;
 
 //import android.app.FragmentActivity;
 

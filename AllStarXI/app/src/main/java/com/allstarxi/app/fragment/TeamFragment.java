@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.fragment;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.allstarxi.app.R;
 import com.allstarxi.app.adapter.PlayerDataAdapter;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -124,7 +125,7 @@ public class TeamFragment extends android.support.v4.app.Fragment implements Ada
         {
             JsonObject object = (JsonObject)new JsonParser().parse(json);
             JsonArray array = object.getAsJsonArray("players");
-            adapter.mJsonArray = array;
+            adapter.mJsonArrayFull = array;
             adapter.notifyDataSetChanged();
         }
         catch (JsonParseException e)

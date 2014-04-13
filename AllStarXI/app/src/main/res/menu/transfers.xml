@@ -2,8 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.allstarxi.app.activity.TransfersActivity" >
     
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_sort"
+        android:title="Sort"
         android:orderInCategory="100"
         android:showAsAction="always" />
+
 </menu>

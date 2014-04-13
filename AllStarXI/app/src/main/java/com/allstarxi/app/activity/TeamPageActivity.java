@@ -68,7 +68,7 @@ public class TeamPageActivity extends Activity implements AdapterView.OnItemClic
         {
             JsonObject object = (JsonObject)new JsonParser().parse(json);
             JsonArray array = object.getAsJsonArray("players");
-            adapter.mJsonArray = array;
+            adapter.mJsonArrayFull = array;
             adapter.notifyDataSetChanged();
         }
         catch (JsonParseException e)

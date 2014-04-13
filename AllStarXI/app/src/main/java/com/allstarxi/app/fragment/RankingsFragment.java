@@ -1,4 +1,4 @@
-package com.allstarxi.app;
+package com.allstarxi.app.fragment;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -8,18 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.allstarxi.app.R;
 
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LeaguesFragment.OnFragmentInteractionListener} interface
+ * {@link RankingsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LeaguesFragment#newInstance} factory method to
+ * Use the {@link RankingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class LeaguesFragment extends Fragment {
+public class RankingsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,18 +38,18 @@ public class LeaguesFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LeaguesFragment.
+     * @return A new instance of fragment RankingsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LeaguesFragment newInstance(String param1, String param2) {
-        LeaguesFragment fragment = new LeaguesFragment();
+    public static RankingsFragment newInstance(String param1, String param2) {
+        RankingsFragment fragment = new RankingsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    public LeaguesFragment() {
+    public RankingsFragment() {
         // Required empty public constructor
     }
 
@@ -65,7 +66,7 @@ public class LeaguesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leagues, container, false);
+        return inflater.inflate(R.layout.fragment_rankings, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

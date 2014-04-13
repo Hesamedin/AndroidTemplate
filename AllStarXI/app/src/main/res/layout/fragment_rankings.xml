@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.allstarxi.app.RankingsFragment">
+    tools:context="com.allstarxi.app.fragment.RankingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
