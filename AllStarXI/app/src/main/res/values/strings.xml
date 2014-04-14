@@ -70,5 +70,9 @@
     <string name="title_activity_team_page_with_drawer">TeamPageWithDrawerActivity</string>
     <string name="title_activity_matches">MatchesActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="header_branding">Header Branding</string>
+    <string name="general_content_description">GeneralContentDescription</string>
+    <string name="header_btn_edit">Edit</string>
+    <string name="title_activity_new_start">NewStartActivity</string>
 
 </resources>

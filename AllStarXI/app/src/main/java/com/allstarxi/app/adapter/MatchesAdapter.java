@@ -95,7 +95,7 @@ public class MatchesAdapter extends BaseAdapter
 
         if(jsonObject.has("left_country"))
         {
-            String leftCountryName = jsonObject.get("name").getAsString();
+            String leftCountryName = jsonObject.get("left_country").getAsString();
             holder.leftCountryName.setText(leftCountryName);
 
             Resources r = mContext.getResources();
@@ -104,7 +104,7 @@ public class MatchesAdapter extends BaseAdapter
         }
         if(jsonObject.has("right_country"))
         {
-            String rightCountryName = jsonObject.get("name").getAsString();
+            String rightCountryName = jsonObject.get("right_country").getAsString();
             holder.rightCountryName.setText(rightCountryName);
 
             Resources r = mContext.getResources();

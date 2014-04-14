@@ -45,6 +45,7 @@ public class AutoDraftStep2Activity extends Activity implements AdapterView.OnIt
                         System.out.println(result.toString());
                         adapter.updateData(result.get("teams").getAsJsonArray());
                     }
+
                 });
     }
 

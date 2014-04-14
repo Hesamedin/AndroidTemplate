@@ -140,7 +140,7 @@ public class MatchesFragment extends Fragment implements AdapterView.OnItemClick
                         .sortKeys()
                         .build();
 
-        matchesDataListView.setAdapter(sectionedAdapter);
+        matchesDataListView.setAdapter(adapter);
 
         // Inflate the layout for this fragment
         return returnView;

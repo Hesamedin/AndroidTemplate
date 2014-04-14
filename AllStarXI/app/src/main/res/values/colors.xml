@@ -2,4 +2,8 @@
 <resources>
     <color name="backgroundCreme">#FAF9F0</color>
     <color name="allStarDarkGreen">#3A874E</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#FFFFFF</color>
+    <color name="silver">#CCCCCC</color>
+    <color name="font_list_matches">#DDAAFF</color>
 </resources>
