@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- Frame layout to display Fragments -->
+    <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <!-- Container to display slider menu -->
+    <FrameLayout
+            android:id="@+id/frame_menu"
+            android:layout_width="@dimen/slide_menu_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:paddingTop="@dimen/header_bar_height"/>
+
+</android.support.v4.widget.DrawerLayout>
