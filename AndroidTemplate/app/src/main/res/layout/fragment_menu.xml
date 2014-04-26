@@ -4,6 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#00ff00">
+              android:background="#00ff00"
+              android:id="@+id/container">
 
 </LinearLayout>

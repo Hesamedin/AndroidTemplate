@@ -1,21 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:actionBarStyle">@style/AllStarActionBarTheme</item>
-    </style>
-
-    <style name="AllStarActionBarTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
-        <item name="android:background">@color/allStarDarkGreen</item>
-        <item name="android:titleTextStyle">@style/AllStarActionBarTextStyle</item>
-    </style>
-
-    <style name="AllStarActionBarTextStyle" parent="@android:style/Theme.Holo.Light.NoActionBar">
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-
-    <style name="font_fancied_orange">
+    <style name="branding_orange">
         <item name="android:typeface">normal</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">#F89425</item>

@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,22 +16,18 @@ import android.widget.ProgressBar;
  * Date: 3/7/13
  * Time: 4:05 PM
  */
-public class HeaderBar extends LinearLayout {
+public class HeaderBar extends RelativeLayout {
 
     public interface OnHeaderClicked {
         public void OnItem(int itemId);
     }
 
     private static final String TAG = "HeaderBar";
-    private static final int GOD_MODE_ACTIVATION = 7;
 
     private OnHeaderClicked onHeaderClicked;
     private Context mContext;
     private ProgressBar progressBar;
     private ImageButton ibMenuSlider;
-
-    private boolean messageIconFlashingFlag = false;
-
 
     public HeaderBar(Context context) {
         super(context);
@@ -54,7 +50,7 @@ public class HeaderBar extends LinearLayout {
     private void init() {
 
         LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout view = (LinearLayout) mInflater.inflate(R.layout.widget_headerbar, null);
+        RelativeLayout view = (RelativeLayout) mInflater.inflate(R.layout.widget_headerbar, null);
         addView(view);
 
         progressBar = (ProgressBar) view.findViewById(R.id.pbLoading);

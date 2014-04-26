@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Android App</string>
+    <string name="app_name">Android Template</string>
 
-    <string name="header_branding">TestApp</string>
+    <string name="header_branding">Template</string>
     <string name="general_content_description">content description</string>
     <string name="header_btn_edit">Test</string>
 

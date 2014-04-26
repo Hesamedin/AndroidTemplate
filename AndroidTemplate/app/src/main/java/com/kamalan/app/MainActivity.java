@@ -6,6 +6,7 @@ import com.kamalan.fragment.SuperFragment;
 import com.kamalan.utility.Log;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -17,7 +18,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class MainActivity extends AbstractActivity implements SuperFragment.OnMenuClickedListener {
+public class MainActivity extends AbstractActivity implements
+        SuperFragment.OnMenuClickedListener,
+        MenuFragment.OnSlideMenuClickedListener {
 
     private static final String TAG = "MainActivity";
     private static final String TAG_FRAG_HOME = "MainFragment";
@@ -47,9 +50,15 @@ public class MainActivity extends AbstractActivity implements SuperFragment.OnMe
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mFrameLayout = (FrameLayout) findViewById(R.id.frame_menu);
+        mFrameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeDrawer();
+            }
+        });
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_header_slider, //nav menu toggle icon
+                R.drawable.ic_drawer, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
                 R.string.app_name // nav drawer close - description for accessibility
         ){
@@ -87,21 +96,11 @@ public class MainActivity extends AbstractActivity implements SuperFragment.OnMe
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-    /***
-     * Called when invalidateOptionsMenu() is triggered
-     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // if nav drawer is opened, hide the action items
-//        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-//        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
-    /**
-     * When using the ActionBarDrawerToggle, you must call it during
-     * onPostCreate() and onConfigurationChanged()...
-     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -116,6 +115,36 @@ public class MainActivity extends AbstractActivity implements SuperFragment.OnMe
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void OpenDrawer() {
+        mDrawerLayout.openDrawer(Gravity.LEFT);
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        this.finish();
+    }
+
+    @Override
+    public void OpenMenuItem(int position) {
+        Intent intent = null;
+
+        switch (position) {
+            case 0: intent = new Intent(mContext, SampleActivity.class); break;
+        }
+
+        if(intent != null)
+            startActivity(intent);
+
+        closeDrawer();
+    }
+
     private void displayHomeScreen() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, new MainFragment()).addToBackStack(TAG_FRAG_HOME).commit();
@@ -126,8 +155,6 @@ public class MainActivity extends AbstractActivity implements SuperFragment.OnMe
         fragmentManager.beginTransaction().replace(R.id.frame_menu, new MenuFragment()).addToBackStack(null).commit();
     }
 
-    @Override
-    public void OpenDrawer() {
-        mDrawerLayout.openDrawer(Gravity.LEFT);
-    }
+
+
 }
